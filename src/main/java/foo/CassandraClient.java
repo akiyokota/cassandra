@@ -9,7 +9,6 @@ import com.datastax.driver.core.Row;
 import com.datastax.driver.core.Session;
 
 public class CassandraClient {
-	private Cluster.Builder builder;
 	private Cluster cluster;
 	private Session session;
 	
@@ -47,12 +46,6 @@ public class CassandraClient {
 	
 	public void printResultSet(ResultSet rs)
 	{
-//        List<Row> rows = rs.all();
-//        for(Row r : rows)
-//        {
-//        	System.out.println(r.getString("title"));
-//        }
-
 		
         try {
     		List<ColumnDefinitions.Definition> columns = rs.getColumnDefinitions().asList();
