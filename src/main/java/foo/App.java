@@ -13,11 +13,9 @@ import com.datastax.driver.core.Session;
  */
 public class App 
 {
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
-        
-        /*----------Step1: Create a Cluster Object-------------*/
+	public static void Example () 
+	{
+		/*----------Step1: Create a Cluster Object-------------*/
         //Creating Cluster.Builder object
         //Adding contact point to the Cluster.Builder object
         Cluster.Builder builder = Cluster.builder().addContactPoint("127.0.0.1" );
@@ -44,5 +42,13 @@ public class App
         
         session.close();
         cluster.close();
+	}
+	
+    public static void main( String[] args )
+    {
+    	CassandraClient cassandra = new CassandraClient("127.0.0.1","keyspacename" );
+    	cassandra.printResultSet(cassandra.executeQuery("select * from playlists"));
+    	cassandra.close();
+        
     }
 }
