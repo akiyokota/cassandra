@@ -44,6 +44,23 @@ public class CassandraClient {
 		return rs;
 	}
 	
+	public void executeQueryBatch(List<String> queries)
+	{
+		try {
+			StringBuilder query = new StringBuilder();
+			query.append("BEGIN BATCH");
+			
+			for(String q : queries)
+			{
+				query.append(q).append(";");
+			}
+			
+			session.execute(query.toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void printResultSet(ResultSet rs)
 	{
 		
